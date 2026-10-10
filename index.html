@@ -87,6 +87,9 @@ h3{font-size:1.2rem;font-weight:700;margin-bottom:.35rem}
 .feature .fic{width:48px;height:48px;border-radius:12px;background:rgba(255,95,58,.12);color:var(--coral-dark);display:grid;place-items:center;margin-bottom:1rem}
 .feature .fic .ic{width:24px;height:24px}
 .feature p{color:var(--muted);font-size:.96rem}
+.features.four{grid-template-columns:repeat(4,1fr)}
+.print-note{text-align:center;margin-top:1.8rem;color:var(--muted)}
+.print-note a{color:var(--coral-dark);font-weight:600}
 /* examples */
 .examples{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem}
 .example figcaption{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;margin-top:.9rem}
@@ -124,8 +127,8 @@ h3{font-size:1.2rem;font-weight:700;margin-bottom:.35rem}
 .mail-card p{color:#c3c9d6;margin-top:1rem;font-size:.95rem}
 form{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:2rem}
 form label{display:block;font-weight:600;font-size:.88rem;color:var(--muted);margin-bottom:1rem}
-form input,form textarea{display:block;width:100%;margin-top:.35rem;font:inherit;padding:.8rem .95rem;border:1px solid rgba(14,21,37,.18);border-radius:10px;background:#fff;color:var(--text)}
-form input:focus,form textarea:focus{outline:2px solid rgba(255,95,58,.35);border-color:var(--coral)}
+form input,form textarea,form select{display:block;width:100%;margin-top:.35rem;font:inherit;padding:.8rem .95rem;border:1px solid rgba(14,21,37,.18);border-radius:10px;background:#fff;color:var(--text)}
+form input:focus,form textarea:focus,form select:focus{outline:2px solid rgba(255,95,58,.35);border-color:var(--coral)}
 .f2{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
 .small{font-size:.85rem;color:var(--muted);margin-top:.8rem}
 /* footer */
@@ -142,7 +145,7 @@ footer p{max-width:460px}
 /* responsive */
 @media (max-width:960px){
   .hero-grid,.pay,.about,.contact{grid-template-columns:1fr}
-  .steps,.features{grid-template-columns:1fr 1fr}
+  .steps,.features,.features.four{grid-template-columns:1fr 1fr}
   .strip ul{grid-template-columns:1fr 1fr}
   .strip li:nth-child(2){border-right:0}
   .strip li{border-bottom:1px solid rgba(255,255,255,.08)}
@@ -155,7 +158,7 @@ footer p{max-width:460px}
   .links.open{display:flex}
   .links a:not(.btn){padding:.9rem 0;border-bottom:1px solid var(--line)}
   .links .btn{margin-top:1rem;justify-content:center;padding:.95rem}
-  .steps,.features,.examples{grid-template-columns:1fr}
+  .steps,.features,.features.four,.examples{grid-template-columns:1fr}
   .strip ul{grid-template-columns:1fr}
   .strip li{border-right:0}
   .hero-actions .btn{flex:1 1 100%;justify-content:center}
@@ -184,6 +187,10 @@ footer p{max-width:460px}
   <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></symbol>
   <symbol id="i-invoice" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v15H6z"/><path d="M14 2v6h6M9 13h7M9 17h5"/></g></symbol>
   <symbol id="i-user" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></g></symbol>
+  <symbol id="i-shirt" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M8 3 3 6l2 5 2-1v11h10V10l2 1 2-5-5-3c-.5 1.6-2 2.6-4 2.6S8.5 4.6 8 3Z"/></symbol>
+  <symbol id="i-card" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M6 10h6M6 14h9"/></g></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h12a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1Z"/><path d="M9 7h6M9 11h6M9 15h4"/></g></symbol>
+  <symbol id="i-sticker" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-9-9h0a9 9 0 0 1 9 9v0l-9 9"/><path d="M21 12h-5a4 4 0 0 0-4 4v5"/></g></symbol>
   <symbol id="logo" viewBox="0 0 40 40"><rect width="40" height="40" rx="11" style="fill:var(--mark,#0e1525)"/><path d="M9 12.5 13.6 28l4.4-11.3L22.4 28 27 12.5" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="31.2" cy="26.4" r="2.8" style="fill:var(--dot,#ff5f3a)"/></symbol>
 </svg>
 
@@ -195,6 +202,7 @@ footer p{max-width:460px}
       <a href="#how">How it works</a>
       <a href="#included">What you get</a>
       <a href="#examples">Examples</a>
+      <a href="#print">Print &amp; workwear</a>
       <a href="#faqs">FAQs</a>
       <a class="btn btn-coral" href="#contact">Get in touch</a>
     </div>
@@ -286,6 +294,23 @@ footer p{max-width:460px}
   </div>
 </section>
 
+<section class="section alt" id="print">
+  <div class="container">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">Print &amp; workwear</span>
+      <h2>Your branding, beyond the website</h2>
+      <p class="lead">The same logo and colours on the things customers see in person, so everything matches.</p>
+    </div>
+    <div class="features four">
+      <div class="feature reveal"><div class="fic"><svg class="ic"><use href="#i-shirt"/></svg></div><h3>Custom workwear</h3><p>T-shirts, polo shirts and hoodies with your logo, for you and your team.</p></div>
+      <div class="feature reveal"><div class="fic"><svg class="ic"><use href="#i-card"/></svg></div><h3>Business cards</h3><p>Cards to hand out that carry your website, phone number and branding.</p></div>
+      <div class="feature reveal"><div class="fic"><svg class="ic"><use href="#i-menu"/></svg></div><h3>Menus</h3><p>Printed menus for cafés, takeaways and restaurants that match the menu on your website.</p></div>
+      <div class="feature reveal"><div class="fic"><svg class="ic"><use href="#i-sticker"/></svg></div><h3>Stickers</h3><p>Logo stickers for packaging, bags, windows and vans.</p></div>
+    </div>
+    <p class="print-note reveal">Order them with your website or any time after. <a href="#contact">Ask for a price</a></p>
+  </div>
+</section>
+
 <section class="section" style="padding-top:0">
   <div class="container">
     <div class="pay reveal">
@@ -325,6 +350,7 @@ footer p{max-width:460px}
       <details><summary>Can it use my own logo, photos and wording?</summary><p>Yes. The first preview uses stand-in photos and wording, and the final version is personalised to your branding.</p></details>
       <details><summary>Can changes be made later?</summary><p>Yes. Any alterations can be made easily, before and after your site goes live.</p></details>
       <details><summary>Do I need my own web address?</summary><p>If you already have one, your new website can go on it. If you don't, I can help you get one.</p></details>
+      <details><summary>Can you do business cards, menus or workwear too?</summary><p>Yes. I can make custom workwear, business cards, menus and stickers in your branding, to match your website. Ask and I'll send you a price.</p></details>
       <details><summary>How much does it cost?</summary><p>Every business is different, so you'll get a clear price before anything is agreed.</p></details>
       <details><summary>How do I pay?</summary><p>By PayPal invoice. You can pay by card or with a PayPal account, through PayPal's secure checkout.</p></details>
     </div>
@@ -343,6 +369,7 @@ footer p{max-width:460px}
       <form class="reveal" id="enquiry">
         <div class="f2"><label>Your name<input name="name" required autocomplete="name"></label><label>Business name<input name="business" required autocomplete="organization"></label></div>
         <label>Your email or phone<input name="contact" required></label>
+        <label>What are you after?<select name="want"><option>A website</option><option>Print or workwear</option><option>Both</option></select></label>
         <label>Anything I should know?<textarea name="msg" rows="4" placeholder="What you do, where you're based, or a link to your Google listing"></textarea></label>
         <button class="btn btn-coral" type="submit"><svg class="ic"><use href="#i-mail"/></svg>Send by email</button>
         <p class="small">This opens your own email app with the message ready to send. Nothing is stored on this website.</p>
@@ -359,7 +386,7 @@ footer p{max-width:460px}
     </div>
     <div>
       <p><a href="mailto:jay@buildsbywalden.co.uk">jay@buildsbywalden.co.uk</a></p>
-      <p style="margin-top:.4rem">© <span id="yr">2026</span> Builds by Walden</p>
+      <p style="margin-top:.4rem"><a href="privacy.html">Privacy</a> · © <span id="yr">2026</span> Builds by Walden</p>
     </div>
   </div>
 </footer>
@@ -376,8 +403,11 @@ footer p{max-width:460px}
   document.getElementById('yr').textContent=new Date().getFullYear();
   document.getElementById('enquiry').addEventListener('submit',function(e){
     e.preventDefault();var d=new FormData(e.target);
-    var body='Hi Jay,\n\nMy name is '+d.get('name')+' from '+d.get('business')+'.\n\n'+(d.get('msg')||'I\'d like a free preview of a new website.')+'\n\nYou can reach me on '+d.get('contact')+'.';
-    location.href='mailto:jay@buildsbywalden.co.uk?subject='+encodeURIComponent('Website preview for '+d.get('business'))+'&body='+encodeURIComponent(body);
+    var want=d.get('want')||'A website';
+    var ask={'A website':'I\'d like a free preview of a new website.','Print or workwear':'I\'m interested in print or workwear with our branding.','Both':'I\'d like a free preview of a new website, and I\'m interested in print or workwear too.'}[want];
+    var body='Hi Jay,\n\nMy name is '+d.get('name')+' from '+d.get('business')+'.\n\n'+(d.get('msg')||ask)+(d.get('msg')?'\n\nI\'m after: '+want.toLowerCase()+'.':'')+'\n\nYou can reach me on '+d.get('contact')+'.';
+    var subj=want==='Print or workwear'?'Print or workwear for ':'Website preview for ';
+    location.href='mailto:jay@buildsbywalden.co.uk?subject='+encodeURIComponent(subj+d.get('business'))+'&body='+encodeURIComponent(body);
   });
 })();
 </script>
