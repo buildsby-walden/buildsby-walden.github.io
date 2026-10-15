@@ -88,6 +88,8 @@ h3{font-size:1.2rem;font-weight:700;margin-bottom:.35rem}
 .feature .fic .ic{width:24px;height:24px}
 .feature p{color:var(--muted);font-size:.96rem}
 .features.four{grid-template-columns:repeat(4,1fr)}
+#addons .features{display:flex;flex-wrap:wrap;justify-content:center}     /* five cards: the last row sits in the middle */
+#addons .feature{flex:0 1 calc((100% - 2.4rem)/3)}
 .print-note{text-align:center;margin-top:1.8rem;color:var(--muted)}
 .print-note a{color:var(--coral-dark);font-weight:600}
 /* examples */
@@ -129,6 +131,12 @@ form{background:var(--card);border:1px solid var(--line);border-radius:var(--rad
 form label{display:block;font-weight:600;font-size:.88rem;color:var(--muted);margin-bottom:1rem}
 form input,form textarea,form select{display:block;width:100%;margin-top:.35rem;font:inherit;padding:.8rem .95rem;border:1px solid rgba(14,21,37,.18);border-radius:10px;background:#fff;color:var(--text)}
 form input:focus,form textarea:focus,form select:focus{outline:2px solid rgba(255,95,58,.35);border-color:var(--coral)}
+.wants{border:0;padding:0;margin:0 0 1rem;display:flex;flex-wrap:wrap;gap:.45rem}
+.wants legend{font-weight:600;font-size:.88rem;color:var(--muted);margin-bottom:.5rem;padding:0}
+.wants legend span{font-weight:500;color:#9aa3b5;margin-left:.35rem}
+.wants label{display:inline-flex;align-items:center;gap:.45rem;margin:0;padding:.5rem .85rem;border:1px solid rgba(14,21,37,.18);border-radius:999px;background:#fff;color:var(--text);font-weight:600;font-size:.88rem;cursor:pointer;min-height:44px}
+.wants input{display:inline-block;width:auto;margin:0;padding:0;accent-color:var(--coral-dark);width:16px;height:16px}
+.wants label:has(input:checked){border-color:var(--coral);background:#fff3ef}
 .f2{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
 .small{font-size:.85rem;color:var(--muted);margin-top:.8rem}
 /* footer */
@@ -146,6 +154,7 @@ footer p{max-width:460px}
 @media (max-width:960px){
   .hero-grid,.pay,.about,.contact{grid-template-columns:1fr}
   .steps,.features,.features.four{grid-template-columns:1fr 1fr}
+  #addons .feature{flex-basis:calc((100% - 1.2rem)/2)}
   .strip ul{grid-template-columns:1fr 1fr}
   .strip li:nth-child(2){border-right:0}
   .strip li{border-bottom:1px solid rgba(255,255,255,.08)}
@@ -159,6 +168,7 @@ footer p{max-width:460px}
   .links a:not(.btn){padding:.9rem 0;border-bottom:1px solid var(--line)}
   .links .btn{margin-top:1rem;justify-content:center;padding:.95rem}
   .steps,.features,.features.four,.examples{grid-template-columns:1fr}
+  #addons .feature{flex-basis:100%}
   .strip ul{grid-template-columns:1fr}
   .strip li{border-right:0}
   .hero-actions .btn{flex:1 1 100%;justify-content:center}
@@ -277,6 +287,23 @@ footer p{max-width:460px}
   </div>
 </section>
 
+<section class="section" id="addons">
+  <div class="container">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">Add-ons</span>
+      <h2>More than a website, when you need it</h2>
+      <p class="lead">Add any of these to a new website, or to the website you already have.</p>
+    </div>
+    <div class="features">
+      <div class="feature reveal"><div class="fic"><svg class="ic"><use href="#i-edit"/></svg></div><h3>Online booking</h3><p>Customers pick a time that's free and get a confirmation straight away. You manage the diary from your phone, with time off and a diary for each person on your team.</p></div>
+      <div class="feature reveal"><div class="fic"><svg class="ic"><use href="#i-menu"/></svg></div><h3>Menus and ordering</h3><p>Your menu written out and easy to read on a phone, with ordering for collection or delivery straight to you.</p></div>
+      <div class="feature reveal"><div class="fic"><svg class="ic"><use href="#i-card"/></svg></div><h3>Online shop</h3><p>Show your products with their sizes and colours, so people can choose and order online instead of having to visit or ring.</p></div>
+      <div class="feature reveal"><div class="fic"><svg class="ic"><use href="#i-msg"/></svg></div><h3>Enquiry form</h3><p>People choose what it's about and how they'd like you to get back to them, and it arrives with you as one clear message.</p></div>
+      <div class="feature reveal"><div class="fic"><svg class="ic"><use href="#i-eye"/></svg></div><h3>Monthly reports</h3><p>Send your figures each month and get back a one-page summary of how things are going, compared with the month and year before.</p></div>
+    </div>
+  </div>
+</section>
+
 <section class="section" id="examples">
   <div class="container">
     <div class="sec-head reveal">
@@ -351,7 +378,8 @@ footer p{max-width:460px}
       <details><summary>Can changes be made later?</summary><p>Yes. Any alterations can be made easily, before and after your site goes live.</p></details>
       <details><summary>Do I need my own web address?</summary><p>If you already have one, your new website can go on it. If you don't, I can help you get one.</p></details>
       <details><summary>Can you do business cards, menus or workwear too?</summary><p>Yes. I can make custom workwear, business cards, menus and stickers in your branding, to match your website. Ask and I'll send you a price.</p></details>
-      <details><summary>How much does it cost?</summary><p>Every business is different, so you'll get a clear price before anything is agreed.</p></details>
+      <details><summary>How much does it cost?</summary><p>Every business is different, so you'll get a clear price before anything is agreed. There are two ways to pay: a one-off set-up fee and then a small monthly fee, or nothing upfront and a monthly plan for a minimum term (paying upfront always works out cheaper). The monthly fee covers hosting, your web address and support.</p></details>
+      <details><summary>Who runs Builds by Walden?</summary><p>Me, Jay. I work with small businesses across the UK, online, and you deal with me from the first preview to the finished website.</p></details>
       <details><summary>How do I pay?</summary><p>By PayPal invoice. You can pay by card or with a PayPal account, through PayPal's secure checkout.</p></details>
     </div>
   </div>
@@ -369,7 +397,17 @@ footer p{max-width:460px}
       <form class="reveal" id="enquiry">
         <div class="f2"><label>Your name<input name="name" required autocomplete="name"></label><label>Business name<input name="business" required autocomplete="organization"></label></div>
         <label>Your email or phone<input name="contact" required></label>
-        <label>What are you after?<select name="want"><option>A website</option><option>Print or workwear</option><option>Both</option></select></label>
+        <fieldset class="wants"><legend>What are you after? <span>Tick all that apply</span></legend>
+          <label><input type="checkbox" name="want" value="a new website" checked>A new website</label>
+          <label><input type="checkbox" name="want" value="a better version of my current website">A better version of my website</label>
+          <label><input type="checkbox" name="want" value="online booking">Online booking</label>
+          <label><input type="checkbox" name="want" value="a menu or online ordering">Menu or online ordering</label>
+          <label><input type="checkbox" name="want" value="an online shop">An online shop</label>
+          <label><input type="checkbox" name="want" value="an enquiry form">An enquiry form</label>
+          <label><input type="checkbox" name="want" value="monthly reports">Monthly reports</label>
+          <label><input type="checkbox" name="want" value="print or workwear">Print or workwear</label>
+          <label><input type="checkbox" name="want" value="not sure yet">Not sure yet</label>
+        </fieldset>
         <label>Anything I should know?<textarea name="msg" rows="4" placeholder="What you do, where you're based, or a link to your Google listing"></textarea></label>
         <button class="btn btn-coral" type="submit"><svg class="ic"><use href="#i-mail"/></svg>Send by email</button>
         <p class="small">This opens your own email app with the message ready to send. Nothing is stored on this website.</p>
@@ -403,10 +441,14 @@ footer p{max-width:460px}
   document.getElementById('yr').textContent=new Date().getFullYear();
   document.getElementById('enquiry').addEventListener('submit',function(e){
     e.preventDefault();var d=new FormData(e.target);
-    var want=d.get('want')||'A website';
-    var ask={'A website':'I\'d like a free preview of a new website.','Print or workwear':'I\'m interested in print or workwear with our branding.','Both':'I\'d like a free preview of a new website, and I\'m interested in print or workwear too.'}[want];
-    var body='Hi Jay,\n\nMy name is '+d.get('name')+' from '+d.get('business')+'.\n\n'+(d.get('msg')||ask)+(d.get('msg')?'\n\nI\'m after: '+want.toLowerCase()+'.':'')+'\n\nYou can reach me on '+d.get('contact')+'.';
-    var subj=want==='Print or workwear'?'Print or workwear for ':'Website preview for ';
+    var wants=d.getAll('want').filter(function(w){return w!=='not sure yet';});
+    var and=function(xs){return xs.length>1?xs.slice(0,-1).join(', ')+' and '+xs[xs.length-1]:(xs[0]||'');};
+    var site=wants.filter(function(w){return /website/.test(w);}), rest=wants.filter(function(w){return !/website/.test(w);});
+    var ask=site.length?'I\'d like a free preview of '+(site.indexOf('a new website')>-1?'a new website':'a better version of my website')+(rest.length?', and I\'m also interested in '+and(rest):'')+'.':
+      rest.length?'I\'m interested in '+and(rest)+'.':'I\'d like to find out what you could do for my business.';
+    var list=and(wants);
+    var body='Hi Jay,\n\nMy name is '+d.get('name')+' from '+d.get('business')+'.\n\n'+(d.get('msg')||ask)+(d.get('msg')&&wants.length?'\n\nI\'m interested in: '+list+'.':'')+'\n\nYou can reach me on '+d.get('contact')+'.';
+    var subj=site.length?'Website preview for ':(wants.length===1&&wants[0]==='print or workwear'?'Print or workwear for ':'Enquiry from ');
     location.href='mailto:jay@buildsbywalden.co.uk?subject='+encodeURIComponent(subj+d.get('business'))+'&body='+encodeURIComponent(body);
   });
 })();
