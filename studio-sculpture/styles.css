@@ -567,38 +567,21 @@ button,a{-webkit-touch-callout:none}
 .chip,.subtabs button,.seg,.tt-day{box-shadow:inset 0 1px 0 rgba(255,255,255,.06)}
 .tile:hover,.next-card:hover,.class-card:hover{border-color:rgba(255,255,255,.2);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 16px 40px rgba(0,0,0,.5)}
 .tile-dark{background:linear-gradient(160deg,#252016 0%,#1b1b1b 55%)!important;border-color:rgba(220,163,90,.28)!important}
-/* ===== Gold and Platinum as real metal cards (24 Oct 2026) ===== */
-.price.metal{border:0;overflow:hidden;isolation:isolate;transition:transform .25s ease,box-shadow .25s ease;will-change:transform;
-  box-shadow:0 26px 60px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.75),inset 0 -2px 0 rgba(0,0,0,.25),inset 0 0 0 1px rgba(255,255,255,.18)}
-.price.metal>*{position:relative;z-index:2}
-/* brushed grain + a soft glow that follows the mouse */
-.price.metal::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
-  background:radial-gradient(circle at var(--gx,30%) var(--gy,0%),rgba(255,255,255,.45),transparent 45%),
-             repeating-linear-gradient(97deg,rgba(255,255,255,.07) 0 1px,rgba(0,0,0,.04) 1px 2px,transparent 2px 4px);mix-blend-mode:overlay}
-/* the light sweeping across the metal */
-.price.metal::after{content:"";position:absolute;top:-60%;bottom:-60%;left:-70%;width:40%;z-index:1;pointer-events:none;
-  background:linear-gradient(100deg,transparent,rgba(255,255,255,.65),transparent);transform:skewX(-20deg);animation:metalSheen 7s ease-in-out infinite}
-.tier-platinum::after{animation-delay:1.4s}
-@keyframes metalSheen{0%,58%{left:-70%}100%{left:140%}}
-.tier-gold{background:linear-gradient(128deg,#6f4e17 0%,#b98a3d 14%,#e9c57c 30%,#fbe7b4 40%,#fff6dc 44%,#d8aa58 58%,#f0cd85 72%,#a77c33 88%,#6a4a16 100%)}
-.tier-platinum{background:linear-gradient(128deg,#4b5057 0%,#8f959e 14%,#d3d7dd 30%,#f1f3f6 40%,#ffffff 44%,#b5bac2 58%,#e2e5e9 72%,#8a9098 88%,#4e535a 100%)}
-.metal-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:.2rem}
-.tier-name{font:600 .8rem/1 "Jost",sans-serif;letter-spacing:.38em;text-transform:uppercase;color:rgba(20,14,4,.62);text-shadow:0 1px 0 rgba(255,255,255,.45)}
-.tier-platinum .tier-name{color:rgba(10,12,16,.6)}
-.metal-mark{width:36px;height:auto;filter:grayscale(1) brightness(.35) contrast(1.4);opacity:.55;mix-blend-mode:multiply}
-.price.metal h3{color:#1d1407;font-weight:600;font-size:1.3rem;text-shadow:0 1px 0 rgba(255,255,255,.4)}
-.price.metal .amt{color:#140e04;font-weight:400;text-shadow:0 1px 0 rgba(255,255,255,.45)}
-.price.metal .amt small{color:rgba(20,14,4,.65)}
-.price.tier-platinum h3,.price.tier-platinum .amt{color:#101215}
-.price.tier-platinum .amt small{color:rgba(10,12,16,.62)}
-.price.metal ul{color:rgba(22,16,6,.86);font-weight:500}
-.price.tier-platinum ul{color:rgba(12,14,18,.86)}
-.tier-gold li::before{background:#141008 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f2cf84' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12l4 4 8-8'/%3E%3C/svg%3E") center/11px no-repeat}
-.tier-platinum li::before{background:#111317 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e9ecf0' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12l4 4 8-8'/%3E%3C/svg%3E") center/11px no-repeat}
-.price.metal .tag{position:static;align-self:flex-start;background:#111;color:#f2cf84;box-shadow:0 4px 12px rgba(0,0,0,.25)}
-.price.tier-platinum .tag{color:#eef0f3}
-.btn-metal{background:#0d0d0d;color:#f2cf84;border:0;font-weight:700;letter-spacing:.02em;box-shadow:0 10px 24px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.08)}
-.btn-metal:hover{background:#000;box-shadow:0 14px 30px rgba(0,0,0,.45)}
-.tier-platinum .btn-metal{color:#eef0f3}
-@media (prefers-reduced-motion:reduce){.price.metal::after{animation:none;display:none}}
+/* ===== Gold and Platinum: charcoal tiles like the rest, with a quiet metallic finish (24 Oct 2026) ===== */
+.tier-gold{--m1:#8a6a2e;--m2:#e9c57c;--m3:#fbe7b4;--m4:#b98a3d;--mt:#ecc58c;--mglow:rgba(220,163,90,.10)}
+.tier-platinum{--m1:#6d727a;--m2:#d3d7dd;--m3:#ffffff;--m4:#9aa0a8;--mt:#e4e7eb;--mglow:rgba(220,226,234,.08)}
+.price.metal{border:1px solid transparent;
+  background:radial-gradient(120% 70% at 100% 0%,var(--mglow),transparent 60%) padding-box,linear-gradient(var(--paper),var(--paper)) padding-box,
+             linear-gradient(135deg,var(--m1),var(--m2) 30%,var(--m3) 45%,var(--m4) 65%,var(--m1)) border-box}
+.metal-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:.1rem}
+.tier-name,.price.metal .amt{background:linear-gradient(120deg,var(--m1),var(--m2) 35%,var(--m3) 50%,var(--m2) 65%,var(--m4));-webkit-background-clip:text;background-clip:text;color:transparent}
+.tier-name{font:600 .74rem/1 "Jost",sans-serif;letter-spacing:.34em;text-transform:uppercase}
+.price.metal .amt small{-webkit-text-fill-color:var(--muted);color:var(--muted)}
+.metal-mark{width:28px;height:auto;filter:grayscale(1) brightness(1.6);opacity:.35}
+.price.metal .tag{position:absolute;top:-12px;left:1.5rem;background:#1f1f1f;color:var(--mt);border:1px solid rgba(255,255,255,.12)}
+.tier-gold li::before{background:rgba(220,163,90,.14) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e9c57c' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12l4 4 8-8'/%3E%3C/svg%3E") center/11px no-repeat}
+.tier-platinum li::before{background:rgba(220,226,234,.10) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e4e7eb' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12l4 4 8-8'/%3E%3C/svg%3E") center/11px no-repeat}
+.btn-metal{color:var(--mt);border:1px solid transparent;font-weight:600;
+  background:linear-gradient(var(--sand),var(--sand)) padding-box,linear-gradient(135deg,var(--m1),var(--m2) 35%,var(--m3) 50%,var(--m4)) border-box}
+.btn-metal:hover{background:linear-gradient(#262626,#262626) padding-box,linear-gradient(135deg,var(--m1),var(--m2) 35%,var(--m3) 50%,var(--m4)) border-box;box-shadow:none}
 .price ul{align-content:start}

@@ -61,13 +61,6 @@
       <ul>${(lines[p.key] || []).map(l => `<li>${E(l)}</li>`).join("")}</ul>
       <button class="btn btn-ghost" data-buy="${p.key}" type="button">Buy pass</button></div>`).join("");
     $$("[data-buy]").forEach(b => b.onclick = () => buyFlow(b.dataset.buy));
-    // a gentle tilt towards the mouse on computers (phones keep the light sweep)
-    if (matchMedia("(hover:hover) and (pointer:fine)").matches && !matchMedia("(prefers-reduced-motion:reduce)").matches)
-      $$("#price-grid .metal").forEach(c => {
-        c.onpointermove = e => { const r = c.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
-          c.style.transform = `perspective(900px) rotateY(${x * 8}deg) rotateX(${-y * 8}deg) translateY(-4px)`; c.style.setProperty("--gx", (x + .5) * 100 + "%"); c.style.setProperty("--gy", (y + .5) * 100 + "%"); };
-        c.onpointerleave = () => { c.style.transform = ""; };
-      });
   }
 
   // events, team, reviews, faq, hours
