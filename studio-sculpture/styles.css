@@ -2,8 +2,8 @@
 :root{
   /* dark, to match studiosculpture.co.uk: near-black, off-white text, their teal (#00c0b0) and gold (#dca35a) */
   color-scheme:dark;
-  --ivory:#010101; --paper:#0f0f0f; --sand:#171717; --stone:#2c2c2c; --deep:#141414; --on-light:#010101;
-  --ink:#f5f5f5; --text:#d6d4cf; --muted:#9c988f; --line:rgba(255,255,255,.09);
+  --ivory:#010101; --paper:#171717; --sand:#212121; --stone:#363636; --deep:#1b1b1b; --on-light:#010101;
+  --ink:#f5f5f5; --text:#d6d4cf; --muted:#a29e95; --line:rgba(255,255,255,.13);
   --gold:#dca35a; --gold-deep:#e9bd80; --gold-soft:rgba(220,163,90,.15); --gold-hi:#ecc58c;
   --teal:#00c0b0; --teal-deep:#3fd6c8; --teal-soft:rgba(0,192,176,.14);
   --heat:#e8763f; --heat-soft:rgba(232,118,63,.15);
@@ -562,3 +562,8 @@ body.signed-in .acct-btn.member .av{box-shadow:0 0 0 2px var(--paper),0 0 0 3.5p
 :focus:not(:focus-visible){outline:none}
 :focus-visible{outline:2px solid var(--teal);outline-offset:2px}
 button,a{-webkit-touch-callout:none}
+/* tiles stand off the black: a lighter charcoal, a clearer edge and a soft top highlight (24 Oct 2026) */
+.tile,.next-card,.slot,.class-card,.price,.pkg,.event,.review,.visit-card,.list-item,.kpi,.mile,.wc-next,.payg,.home-review,.tt-day,.g-badge,.chip,.subtabs button,.seg,.quiz-cta,.tt-empty{box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 10px 30px rgba(0,0,0,.35)}
+.chip,.subtabs button,.seg,.tt-day{box-shadow:inset 0 1px 0 rgba(255,255,255,.06)}
+.tile:hover,.next-card:hover,.class-card:hover{border-color:rgba(255,255,255,.2);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 16px 40px rgba(0,0,0,.5)}
+.tile-dark{background:linear-gradient(160deg,#252016 0%,#1b1b1b 55%)!important;border-color:rgba(220,163,90,.28)!important}
