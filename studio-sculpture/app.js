@@ -48,12 +48,26 @@
       gold: ["12 classes every month", "£8.25 a class", "A free guest pass every month", "Cancel any time, no notice period"],
       platinum: ["Unlimited classes", "Come as often as you like", "A free guest pass every month", "Cancel any time, no notice period"],
     };
-    $("#price-grid").innerHTML = D.prices.filter(p => p.key === "six" || p.kind === "membership").map(p => `<div class="price ${feat[p.key] ? "feature" : ""}">
+    const metal = { gold: "Gold", platinum: "Platinum" };      // the memberships are real metal cards
+    $("#price-grid").innerHTML = D.prices.filter(p => p.key === "six" || p.kind === "membership").map(p => metal[p.key] ? `<div class="price metal tier-${p.key}">
+      <div class="metal-top"><span class="tier-name">${metal[p.key]}</span><img class="metal-mark" src="img/mark.webp" alt=""></div>
+      ${p.badge ? `<span class="badge tag">${E(p.badge)}</span>` : ""}
+      <h3>${E(p.name)}</h3><div class="amt">£${p.price}${p.unit ? ` <small>${E(p.unit)}</small>` : ""}</div>
+      <ul>${(lines[p.key] || []).map(l => `<li>${E(l)}</li>`).join("")}</ul>
+      <button class="btn btn-metal" data-buy="${p.key}" type="button">Join ${metal[p.key]}</button></div>`
+      : `<div class="price">
       ${p.badge ? `<span class="badge gold tag">${E(p.badge)}</span>` : ""}
       <h3>${E(p.name)}</h3><div class="amt">£${p.price}${p.unit ? ` <small>${E(p.unit)}</small>` : ""}</div>
       <ul>${(lines[p.key] || []).map(l => `<li>${E(l)}</li>`).join("")}</ul>
-      <button class="btn ${feat[p.key] ? "btn-gold" : "btn-ghost"}" data-buy="${p.key}" type="button">${p.kind === "membership" ? "Join" : "Buy pass"}</button></div>`).join("");
+      <button class="btn btn-ghost" data-buy="${p.key}" type="button">Buy pass</button></div>`).join("");
     $$("[data-buy]").forEach(b => b.onclick = () => buyFlow(b.dataset.buy));
+    // a gentle tilt towards the mouse on computers (phones keep the light sweep)
+    if (matchMedia("(hover:hover) and (pointer:fine)").matches && !matchMedia("(prefers-reduced-motion:reduce)").matches)
+      $$("#price-grid .metal").forEach(c => {
+        c.onpointermove = e => { const r = c.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+          c.style.transform = `perspective(900px) rotateY(${x * 8}deg) rotateX(${-y * 8}deg) translateY(-4px)`; c.style.setProperty("--gx", (x + .5) * 100 + "%"); c.style.setProperty("--gy", (y + .5) * 100 + "%"); };
+        c.onpointerleave = () => { c.style.transform = ""; };
+      });
   }
 
   // events, team, reviews, faq, hours
