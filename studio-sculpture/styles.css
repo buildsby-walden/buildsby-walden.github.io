@@ -585,3 +585,4 @@ button,a{-webkit-touch-callout:none}
   background:linear-gradient(var(--sand),var(--sand)) padding-box,linear-gradient(135deg,var(--m1),var(--m2) 35%,var(--m3) 50%,var(--m4)) border-box}
 .btn-metal:hover{background:linear-gradient(#262626,#262626) padding-box,linear-gradient(135deg,var(--m1),var(--m2) 35%,var(--m3) 50%,var(--m4)) border-box;box-shadow:none}
 .price ul{align-content:start}
+#page-prices .page-title{color:var(--teal)}
