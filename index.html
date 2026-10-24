@@ -100,6 +100,59 @@ h3{font-size:1.2rem;font-weight:700;margin-bottom:.35rem}
 .example .browser{transition:transform .25s}
 .example:hover .browser{transform:translateY(-4px)}
 .note{margin-top:2rem;color:var(--muted);font-size:.9rem;text-align:center}
+/* recent work */
+.kinds{display:flex;flex-wrap:wrap;gap:.5rem;list-style:none;margin-top:1.4rem}
+.kinds li{font-size:.85rem;font-weight:700;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:999px;padding:.45rem .9rem}
+.proj{border-radius:28px;padding:clamp(1.6rem,4vw,3rem);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(2rem,4vw,3.5rem);align-items:center;margin-bottom:1.6rem;position:relative;overflow:hidden}
+.proj.flip .proj-visual{order:-1}
+.proj h3{font-size:clamp(2rem,4vw,3rem);font-weight:800;line-height:1;margin:.6rem 0 .9rem}
+.proj-lede{font-size:1.08rem;margin-bottom:1.4rem}
+.pills{display:flex;gap:.4rem;flex-wrap:wrap}
+.pills span{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.4rem .7rem;border-radius:999px}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.7rem;margin-bottom:1.4rem}
+.stats div{border-radius:14px;padding:.9rem 1rem}
+.stats b{display:block;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:clamp(1.5rem,2.6vw,2rem);line-height:1;letter-spacing:-.02em;margin-bottom:.3rem}
+.stats span{font-size:.8rem;line-height:1.35;display:block}
+.feats{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:.9rem 1.2rem;margin-bottom:1.4rem}
+.feats li{font-size:.9rem;line-height:1.45}
+.feats strong{display:block;font-size:.95rem;margin-bottom:.1rem}
+.visit{font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:.45rem}
+.visit:hover{text-decoration:underline}
+.proj-visual{position:relative;padding-bottom:12%}
+.proj-visual .browser{box-shadow:0 30px 70px rgba(4,8,20,.35)}
+.proj-visual .phone{width:30%;right:0;bottom:0}
+.proj-visual .phone.second{right:31%;bottom:6%;transform:rotate(-4deg)}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;max-width:440px;margin:0 auto;padding:0}
+.duo .phone{position:static;width:100%;transform:none}
+.duo .phone:nth-child(2){transform:translateY(28px)}
+.flow{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.6rem;margin-bottom:1.4rem;counter-reset:f}
+.flow li{background:#fff;border-radius:14px;padding:.9rem;font-size:.82rem;line-height:1.4;color:var(--muted);counter-increment:f}
+.flow li::before{content:counter(f);display:block;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:1.2rem;color:var(--coral)}
+.flow strong{display:block;color:var(--ink);font-size:.92rem}
+/* Jersey Hub: the shop's own navy and lime */
+.jh{background:#06132b;color:#c9d3e6}
+.jh h3{color:#fff;font-style:italic;text-transform:uppercase;letter-spacing:-.03em}
+.jh .pills span{background:rgba(198,255,61,.14);color:#c6ff3d}
+.jh .stats div{background:rgba(255,255,255,.06)}
+.jh .stats b{color:#c6ff3d}.jh .stats span{color:#9fb0cc}
+.jh .feats strong{color:#fff}.jh .feats li{color:#9fb0cc}
+.jh .visit{color:#c6ff3d}
+.jh .phone{border-color:#0b1a36}
+/* Site Prospector */
+.sp{background:var(--sand)}
+.sp .pills span{background:var(--ink);color:#fff}
+.sp .stats div{background:var(--ink)}.sp .stats b{color:#fff}.sp .stats span{color:#aab2c3}
+.sp .feats strong{color:var(--ink)}.sp .feats li{color:var(--muted)}
+/* BiteWise: the app's own greens */
+.bw{background:#e6f2ec;color:#24423a}
+.bw h3{color:#0f3a30}
+.bw .pills span{background:#1f6f5c;color:#fff}
+.bw .stats div{background:#fff;border:1px solid rgba(31,111,92,.12)}
+.bw .stats b{color:#1f6f5c}.bw .stats span{color:#557069}
+.bw .feats strong{color:#0f3a30}.bw .feats li{color:#557069}
+.bw .phone{border-color:#0f3a30}
+.also{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.2rem;margin-top:2.4rem}
+.also .feature .eyebrow{margin-bottom:.4rem;font-size:.7rem}
 /* pay */
 .pay{background:var(--ink);color:#d6dae3;border-radius:28px;padding:clamp(2rem,5vw,4rem);display:grid;grid-template-columns:1.1fr .9fr;gap:3rem;align-items:center}
 .pay h2{color:#fff}
@@ -152,7 +205,8 @@ footer p{max-width:460px}
 @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 /* responsive */
 @media (max-width:960px){
-  .hero-grid,.pay,.about,.contact{grid-template-columns:1fr}
+  .hero-grid,.pay,.about,.contact,.proj{grid-template-columns:1fr}
+  .proj.flip .proj-visual{order:0}
   .steps,.features,.features.four{grid-template-columns:1fr 1fr}
   #addons .feature{flex-basis:calc((100% - 1.2rem)/2)}
   .strip ul{grid-template-columns:1fr 1fr}
@@ -175,6 +229,14 @@ footer p{max-width:460px}
   .phone{width:34%;right:0}
   .tag{left:0;font-size:.75rem}
   .f2{grid-template-columns:1fr}
+  .feats,.also{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr 1fr 1fr;gap:.5rem}
+  .stats div{padding:.7rem .75rem}
+  .flow{grid-template-columns:1fr 1fr}
+  .proj{border-radius:22px}
+  .proj-visual .phone.second{display:none}
+  .proj-visual .phone{width:30%;right:-4px}
+  .proj-visual{padding-bottom:16%}
   .example figcaption{flex-direction:column;gap:.1rem}
 }
 </style>
@@ -211,7 +273,7 @@ footer p{max-width:460px}
     <div class="links">
       <a href="#how">How it works</a>
       <a href="#included">What you get</a>
-      <a href="#examples">Examples</a>
+      <a href="#work">Work</a>
       <a href="#print">Print &amp; workwear</a>
       <a href="#faqs">FAQs</a>
       <a class="btn btn-coral" href="#contact">Get in touch</a>
@@ -227,7 +289,7 @@ footer p{max-width:460px}
       <p class="lead">I'm Jay. I design and build websites for small businesses. I make you a working preview first, so you can see exactly what you'd get before you decide anything.</p>
       <div class="hero-actions">
         <a class="btn btn-coral" href="#contact">Ask for your free preview <svg class="ic"><use href="#i-arrow"/></svg></a>
-        <a class="btn btn-line" href="#examples">See examples</a>
+        <a class="btn btn-line" href="#work">See my work</a>
       </div>
       <ul class="ticks">
         <li><svg class="ic"><use href="#i-check"/></svg>Free preview, no obligation</li>
@@ -251,6 +313,113 @@ footer p{max-width:460px}
       <li><svg class="ic"><use href="#i-edit"/></svg>Changes made easily</li>
       <li><svg class="ic"><use href="#i-lock"/></svg>Pay safely by PayPal invoice</li>
     </ul>
+  </div>
+</section>
+
+<section class="section" id="work">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Selected work</span>
+      <h2>Real projects, live and in use today</h2>
+      <p class="lead">Each one started with a practical problem. Here's what I built to solve it.</p>
+      <ul class="kinds"><li>Business websites</li><li>Online shops</li><li>Booking pages</li><li>Web apps</li><li>Custom tools</li></ul>
+    </div>
+
+    <article class="proj jh reveal">
+      <div>
+        <div class="pills"><span>Online shop</span><span>Live</span></div>
+        <h3>The Jersey Hub</h3>
+        <p class="proj-lede">A complete online football shirt shop: a storefront that looks great on a phone, a smooth checkout, and the tools behind the scenes to run orders, stock and marketing.</p>
+        <div class="stats">
+          <div><b>100+</b><span>products in a live shop</span></div>
+          <div><b>5.0★</b><span>shop reviews</span></div>
+          <div><b>60%</b><span>lighter phone home page, after ad visitors were leaving before it loaded</span></div>
+        </div>
+        <ul class="feats">
+          <li><strong>Checkout with PayPal</strong>Two prices per shirt (UK stock or direct from supplier) and free delivery on two or more.</li>
+          <li><strong>Accounts and loyalty points</strong>Points on every £1, referral rewards and a members' price that keeps customers coming back.</li>
+          <li><strong>Weekly £10 drop and flash sales</strong>Countdowns and timed offers that switch on and off by themselves.</li>
+          <li><strong>Live chat</strong>Customers get a notification or email the moment there's a reply.</li>
+          <li><strong>Stock, packing and labels</strong>A staff app for orders to pack, shipping labels and earnings.</li>
+          <li><strong>Instagram ad maker</strong>Draws the ad and writes a matching caption, with sales tracked back to each ad.</li>
+        </ul>
+        <a class="visit" href="https://thejerseyhub.co.uk" target="_blank" rel="noopener">Visit thejerseyhub.co.uk <svg class="ic"><use href="#i-arrow"/></svg></a>
+      </div>
+      <div class="proj-visual showcase">
+        <div class="browser"><div class="bar"><i></i><i></i><i></i><span>thejerseyhub.co.uk</span></div><img src="img/work/jerseyhub-desktop.jpg" alt="The Jersey Hub online shop home page" loading="lazy" width="1100" height="573"></div>
+        <div class="phone second"><img src="img/work/jerseyhub-phone-shirt.jpg" alt="A shirt page in The Jersey Hub on a phone" loading="lazy"></div>
+        <div class="phone"><img src="img/work/jerseyhub-phone-home.jpg" alt="The Jersey Hub home page on a phone" loading="lazy"></div>
+      </div>
+    </article>
+
+    <article class="proj sp flip reveal">
+      <div>
+        <div class="pills"><span>Business tool</span><span>In daily use</span></div>
+        <h3>Site Prospector</h3>
+        <p class="proj-lede">A tool that finds local businesses whose website is missing or out of date, and builds a tailored new one from their own details, photos and reviews.</p>
+        <ol class="flow">
+          <li><strong>Find</strong>Searches any UK town and trade</li>
+          <li><strong>Check</strong>Spots real problems: no phone layout, placeholder text, a site untouched for years</li>
+          <li><strong>Build</strong>Makes a full site from the business's own photos and reviews</li>
+          <li><strong>Pitch</strong>Sends a friendly email and keeps every reply in one inbox</li>
+        </ol>
+        <ul class="feats">
+          <li><strong>5 designs</strong>Each matched to the trade, from bold and clean to warm and luxe.</li>
+          <li><strong>Booking pages</strong>Salons and barbers get clear service lists, with prices shown once a service is picked.</li>
+          <li><strong>Quality checks</strong>Every site is checked before it goes out. Anything that can't be checked doesn't get sent.</li>
+          <li><strong>Considerate outreach</strong>A daily limit, a do-not-contact list, and it asks before building anything.</li>
+        </ul>
+      </div>
+      <div class="proj-visual showcase">
+        <div class="browser"><div class="bar"><i></i><i></i><i></i><span>Example design</span></div><img src="img/luma-desktop.jpg" alt="A salon website design made by Site Prospector" loading="lazy" width="1200" height="750"></div>
+        <div class="phone"><img src="img/luma-phone.jpg" alt="The same salon design on a phone" loading="lazy"></div>
+      </div>
+    </article>
+
+    <article class="proj bw reveal">
+      <div>
+        <div class="pills"><span>Web app</span><span>Public trial</span></div>
+        <h3>BiteWise</h3>
+        <p class="proj-lede">A meal-planning app for a whole household. It plans the week around everyone's diet and the family budget, then writes the shopping list.</p>
+        <div class="stats">
+          <div><b>156</b><span>recipes</span></div>
+          <div><b>10</b><span>diets</span></div>
+          <div><b>14</b><span>UK allergens</span></div>
+        </div>
+        <ul class="feats">
+          <li><strong>One plan for the household</strong>A shared plan and shopping list, with each person's own portions, goals and progress.</li>
+          <li><strong>Plans to a budget</strong>Uses UK supermarket prices and shows how much switching shop would save.</li>
+          <li><strong>Safe for allergies</strong>One person's allergy removes that meal for everyone, and each household's data stays private.</li>
+          <li><strong>70-second promo video</strong>Made by recording the real app being used, with a voiceover.</li>
+        </ul>
+      </div>
+      <div class="proj-visual duo">
+        <div class="phone"><img src="img/work/bitewise-plan.jpg" alt="BiteWise weekly meal plan on a phone" loading="lazy"></div>
+        <div class="phone"><img src="img/work/bitewise-shopping.jpg" alt="BiteWise shopping list on a phone" loading="lazy"></div>
+      </div>
+    </article>
+
+    <div class="also">
+      <div class="feature reveal"><span class="eyebrow">Price tracker</span><h3>Camera price monitor</h3><p>Checks prices across two markets every morning and lists the best buying opportunities, automatically.</p></div>
+      <div class="feature reveal"><span class="eyebrow">Pop-up shop</span><h3>QR code catalogue</h3><p>A photo catalogue for selling in person. New stock goes live by itself and every order arrives as a phone message.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="examples" style="padding-top:0">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Example sites</span>
+      <h2>The kind of site your business could have</h2>
+      <p class="lead">Every site works on phones first and is built around the business's own photos, reviews and branding.</p>
+    </div>
+    <div class="examples">
+      <figure class="example reveal"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>Example design</span></div><img src="img/oakline-desktop.jpg" alt="Sample website design for a plumbing and heating business" loading="lazy" width="1200" height="750"></div><figcaption><strong>Oakline Plumbing &amp; Heating</strong><span>Trades: call-now buttons, service areas, free quotes</span></figcaption></figure>
+      <figure class="example reveal"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>Example design</span></div><img src="img/maple-desktop.jpg" alt="Sample website design for a café" loading="lazy" width="1200" height="750"></div><figcaption><strong>Maple Street Café</strong><span>Food and drink: menus, opening hours, find us</span></figcaption></figure>
+      <figure class="example reveal"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>Example design</span></div><img src="img/luma-desktop.jpg" alt="Sample website design for a beauty salon" loading="lazy" width="1200" height="750"></div><figcaption><strong>Luma Beauty Rooms</strong><span>Salons: treatments, prices and booking</span></figcaption></figure>
+      <figure class="example reveal"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>Example design</span></div><img src="img/muddy-desktop.jpg" alt="Sample website design for a dog grooming business" loading="lazy" width="1200" height="750"></div><figcaption><strong>Muddy Paws Grooming</strong><span>Local services: reviews up front, easy enquiries</span></figcaption></figure>
+    </div>
+    <p class="note">These four businesses are made up to show the designs.</p>
   </div>
 </section>
 
@@ -304,22 +473,7 @@ footer p{max-width:460px}
   </div>
 </section>
 
-<section class="section" id="examples">
-  <div class="container">
-    <div class="sec-head reveal">
-      <span class="eyebrow">Examples</span>
-      <h2>A style for every kind of business</h2>
-      <p class="lead">From trades to cafés to salons, each design is shaped around the business and its branding.</p>
-    </div>
-    <div class="examples">
-      <figure class="example reveal"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>Plumbing &amp; heating</span></div><img src="img/oakline-desktop.jpg" alt="Sample website design for a plumbing and heating business" loading="lazy" width="1200" height="750"></div><figcaption><strong>Plumbing &amp; heating</strong><span>Bold, trustworthy, quote-focused</span></figcaption></figure>
-      <figure class="example reveal"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>Café</span></div><img src="img/maple-desktop.jpg" alt="Sample website design for a café" loading="lazy" width="1200" height="750"></div><figcaption><strong>Café</strong><span>Warm, homely, menu-board style</span></figcaption></figure>
-      <figure class="example reveal"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>Beauty salon</span></div><img src="img/luma-desktop.jpg" alt="Sample website design for a beauty salon" loading="lazy" width="1200" height="750"></div><figcaption><strong>Beauty salon</strong><span>Calm, elegant, appointment-led</span></figcaption></figure>
-      <figure class="example reveal"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>Dog grooming</span></div><img src="img/muddy-desktop.jpg" alt="Sample website design for a dog grooming business" loading="lazy" width="1200" height="750"></div><figcaption><strong>Dog grooming</strong><span>Bright, friendly, playful</span></figcaption></figure>
-    </div>
-    <p class="note">These are sample designs. The businesses shown are made up, to show the different styles.</p>
-  </div>
-</section>
+
 
 <section class="section alt" id="print">
   <div class="container">
