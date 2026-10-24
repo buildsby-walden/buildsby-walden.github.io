@@ -150,23 +150,23 @@
     const max = Math.max(...data.map(d => d.mem + d.pass + d.drop)) * 1.1 || 1;
     const y = v => H - pad - (v / max) * (H - pad * 2);
     let svg = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Weekly revenue">`;
-    for (let g = 0; g <= 3; g++) { const v = max * g / 3; svg += `<line x1="${pad}" x2="${W - 8}" y1="${y(v)}" y2="${y(v)}" stroke="rgba(28,27,24,.08)"/><text x="${pad - 6}" y="${y(v) + 4}" font-size="10" fill="#8a8377" text-anchor="end">£${Math.round(v / 100) / 10}k</text>`; }
+    for (let g = 0; g <= 3; g++) { const v = max * g / 3; svg += `<line x1="${pad}" x2="${W - 8}" y1="${y(v)}" y2="${y(v)}" stroke="rgba(255,255,255,.08)"/><text x="${pad - 6}" y="${y(v) + 4}" font-size="10" fill="#8f8b84" text-anchor="end">£${Math.round(v / 100) / 10}k</text>`; }
     data.forEach((d, i) => {
       const x = pad + i * bw + bw * .18, w = bw * .64; let base = 0;
-      [["mem", "#1c1b18"], ["pass", "#2bb39b"], ["drop", "#b9975a"]].forEach(([k, c]) => { const v = d[k]; if (!v) return; svg += `<rect x="${x}" y="${y(base + v)}" width="${w}" height="${y(base) - y(base + v)}" rx="3" fill="${c}"><title>${d.lbl}: ${money(v)}</title></rect>`; base += v; });
-      if (weeks <= 8 || i % 2 === 0) svg += `<text x="${x + w / 2}" y="${H - 12}" font-size="10" fill="#8a8377" text-anchor="middle">${d.lbl}</text>`;
+      [["mem", "#f5f5f5"], ["pass", "#00c0b0"], ["drop", "#dca35a"]].forEach(([k, c]) => { const v = d[k]; if (!v) return; svg += `<rect x="${x}" y="${y(base + v)}" width="${w}" height="${y(base) - y(base + v)}" rx="3" fill="${c}"><title>${d.lbl}: ${money(v)}</title></rect>`; base += v; });
+      if (weeks <= 8 || i % 2 === 0) svg += `<text x="${x + w / 2}" y="${H - 12}" font-size="10" fill="#8f8b84" text-anchor="middle">${d.lbl}</text>`;
     });
     $("#rev-chart").innerHTML = svg + "</svg>";
   }
   function mixChart() {
     const act = members.filter(m => !m.lapsed);
-    const parts = [["Platinum", act.filter(m => m.plan === "platinum").length, "#1c1b18"], ["Gold", act.filter(m => m.plan === "gold").length, "#b9975a"], ["Class passes", act.filter(m => m.plan === "six").length, "#2bb39b"], ["Drop-ins", act.filter(m => m.plan === "drop").length, "#d9cbb3"]];
+    const parts = [["Platinum", act.filter(m => m.plan === "platinum").length, "#f5f5f5"], ["Gold", act.filter(m => m.plan === "gold").length, "#dca35a"], ["Class passes", act.filter(m => m.plan === "six").length, "#00c0b0"], ["Drop-ins", act.filter(m => m.plan === "drop").length, "#5f5b55"]];
     const tot = parts.reduce((a, p) => a + p[1], 0); let a0 = -Math.PI / 2, svg = `<svg viewBox="0 0 220 220" style="max-width:200px;margin:0 auto">`;
     parts.forEach(([l, v, c]) => { const a1 = a0 + 2 * Math.PI * v / tot, big = a1 - a0 > Math.PI ? 1 : 0, R = 90, rr = 58, cx = 110, cy = 110;
       const p = (a, rad) => (cx + rad * Math.cos(a)).toFixed(1) + " " + (cy + rad * Math.sin(a)).toFixed(1);
       svg += `<path d="M${p(a0, R)} A${R} ${R} 0 ${big} 1 ${p(a1, R)} L${p(a1, rr)} A${rr} ${rr} 0 ${big} 0 ${p(a0, rr)}Z" fill="${c}"><title>${l}: ${v}</title></path>`; a0 = a1; });
     const mrr = parts[0][1] * 120 + parts[1][1] * 99;
-    svg += `<text x="110" y="106" text-anchor="middle" font-family="Jost" font-size="26" fill="#1c1b18">${money(mrr)}</text><text x="110" y="126" text-anchor="middle" font-size="10" fill="#8a8377">memberships a month</text></svg>`;
+    svg += `<text x="110" y="106" text-anchor="middle" font-family="Jost" font-size="26" fill="#f5f5f5">${money(mrr)}</text><text x="110" y="126" text-anchor="middle" font-size="10" fill="#8f8b84">memberships a month</text></svg>`;
     $("#mix").innerHTML = svg + `<div class="bars" style="margin-top:1rem">${parts.map(([l, v, c]) => `<div class="barrow" style="grid-template-columns:1fr auto"><span><i style="display:inline-block;width:10px;height:10px;border-radius:3px;background:${c};margin-right:.4rem"></i>${l}</span><b>${v}</b></div>`).join("")}</div>`;
   }
   function heatmap(m) {
@@ -179,8 +179,8 @@
         const ss = m.ss.filter(s => s.start.getDay() === d && test(s.start.getHours() + s.start.getMinutes() / 60));
         if (!ss.length) { html += `<span class="c" style="background:transparent;border:1px dashed var(--line)"></span>`; return; }
         const f = ss.reduce((a, s) => a + s.att.length / s.cap, 0) / ss.length;
-        const bg = `rgba(15,110,96,${(.12 + f * .88).toFixed(2)})`;
-        html += `<span class="c" style="background:${bg};color:${f > .55 ? "#fff" : "var(--teal-deep)"}" title="${DAYS[d]} ${lbl}: ${pct(f)} full">${pct(f)}</span>`;
+        const bg = `rgba(0,192,176,${(.12 + f * .88).toFixed(2)})`;
+        html += `<span class="c" style="background:${bg};color:${f > .55 ? "#010101" : "var(--teal-deep)"}" title="${DAYS[d]} ${lbl}: ${pct(f)} full">${pct(f)}</span>`;
       });
     });
     $("#heat").innerHTML = html + "</div>";
@@ -207,7 +207,7 @@
     $("#today-list").innerHTML = ss.length ? ss.map(s => { const f = Math.min(1, S.booked(s) / s.cap); const past = s.start < now;
       return `<div class="cls-row"><b>${S.hm(s.start)}</b><div><div style="font-weight:600;color:var(--ink)">${E(S.cls(s.cls).name)}</div><small class="muted">${E(S.coach(s.coach).name)} · ${S.booked(s)}/${s.cap}${past ? " · finished" : ""}</small></div>${ring(f)}</div>`; }).join("") : `<p class="muted">Enjoy the day off.</p>`;
   }
-  const ring = f => { const C = 2 * Math.PI * 18; return `<svg class="fillring" viewBox="0 0 46 46"><circle cx="23" cy="23" r="18" fill="none" stroke="var(--sand)" stroke-width="5"/><circle cx="23" cy="23" r="18" fill="none" stroke="${f >= 1 ? "#b9975a" : "#2bb39b"}" stroke-width="5" stroke-dasharray="${C * f} ${C}" transform="rotate(-90 23 23)" stroke-linecap="round"/><text x="23" y="27" text-anchor="middle" font-size="11" font-weight="600" fill="#1c1b18">${Math.round(f * 100)}</text></svg>`; };
+  const ring = f => { const C = 2 * Math.PI * 18; return `<svg class="fillring" viewBox="0 0 46 46"><circle cx="23" cy="23" r="18" fill="none" stroke="var(--sand)" stroke-width="5"/><circle cx="23" cy="23" r="18" fill="none" stroke="${f >= 1 ? "#dca35a" : "#00c0b0"}" stroke-width="5" stroke-dasharray="${C * f} ${C}" transform="rotate(-90 23 23)" stroke-linecap="round"/><text x="23" y="27" text-anchor="middle" font-size="11" font-weight="600" fill="#f5f5f5">${Math.round(f * 100)}</text></svg>`; };
   function risk() {
     const nudged = S.st().nudges || [];
     const list = members.filter(m => (m.plan === "platinum" || m.plan === "gold" || m.rate > 1.4) && m.visits.length > 6)
