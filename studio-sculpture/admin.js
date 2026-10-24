@@ -105,7 +105,7 @@
     $$(".side a[data-p]").forEach(a => a.classList.toggle("on", a.dataset.p === p));
     const h = now.getHours();
     $("#page-title").textContent = { dash: (h < 12 ? "Good morning" : h < 18 ? "Good afternoon" : "Good evening") + ", Fran", classes: "Classes & register", members: "Members", loyalty: "Loyalty" }[p] || "Dashboard";
-    $("#period").style.visibility = p === "classes" ? "hidden" : "visible";
+    $("#period").style.display = p === "classes" ? "none" : "";      // no empty gap where the 7/30/90 buttons were
     render();
   }
   $("#today-lbl").textContent = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"][now.getDay()] + " " + now.getDate() + " " + MON[now.getMonth()];
